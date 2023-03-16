@@ -1,0 +1,100 @@
+﻿h1 {
+    font-weight: bolder;
+    color: blue;
+}
+
+h2 {
+    font-weight: bold;
+}
+
+body {
+    background-color: rgb(222, 220, 220);
+    margin-top: 50px;
+}
+
+.login-box {
+    background-color: white;
+    margin-top: 10%;
+    padding: 15px;
+    /* width: 35%; */
+    border-radius: 8px;
+    box-shadow: 3px 3px 20px #888888;
+}
+
+.fb-heading {
+    margin-top: 10%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+input {
+    padding: 15px;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-color: lightgray;
+    font-size: large;
+    border-width: 1px;
+}
+
+.container-fluid {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.login-button {
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-color: lightgray;
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+.forgot-text {
+    color: blue;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bolder;
+}
+
+.create-account-button {
+    width: 60%;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: large;
+    font-weight: bolder;
+}
+
+.create-page {
+    text-align: center;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+hr {
+    border-color: lightgray;
+}
+
+.fb-logo {
+    height: 60px;
+}
+
+.header {
+    text-align: center;
+}
+
+h3 {
+    font-size: 200%;
+    font-weight: bold;
+}
+
+p {
+    font-size: 130%;
+}

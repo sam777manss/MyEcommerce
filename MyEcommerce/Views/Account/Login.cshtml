@@ -1,0 +1,250 @@
+﻿@using MyEcommerce.Models
+@model LoginViewModel
+@{
+
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+    @*<script type="text/javascript">
+
+                window.onload = function () {
+                    alert("@ViewBag.Message");
+                };
+        </script>*@
+    <style>
+
+
+        .body-content {
+            padding-top: 5vh;
+            font-family: Arial, Helvetica, sans-serif;
+            color: lightcoral;
+            background: white;
+            /*background-image: url('../../Images/pexels-pixabay.jpg');*/
+        }
+
+        .container {
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            border: 2px solid White;
+            border-radius: 15px;
+            box-shadow: 0 0 25px pink;
+        }
+
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-item {
+            margin: 5px;
+            padding-bottom: 10px;
+            display: flex;
+        }
+
+            .form-item input {
+                width: 150px;
+                height: 30px;
+                border: 2px solid #e1dede69;
+                border-radius: 5px;
+                text-align: left;
+                margin: 0 5px;
+            }
+
+        .form-item-email {
+            margin: 0 5px;
+            padding-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+            .form-item-email input {
+                height: 30px;
+                border: 2px solid #e1dede69;
+                border-radius: 5px;
+                text-align: left;
+                margin: 0 5px;
+            }
+
+        .form-item-DOB {
+            display: flex;
+            align-items: center;
+        }
+
+            .form-item-DOB label {
+                font-size: 14px;
+                margin: 5px 15px;
+            }
+
+            .form-item-DOB input {
+                border-radius: 5px;
+            }
+
+        .form-item-gender {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+
+            .form-item-gender label {
+                margin: 5px 15px;
+            }
+
+        .form-item-DOB input {
+            border-radius: 5px;
+        }
+
+
+        .form-item-password {
+            margin: 5px;
+            padding-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+            .form-item-password input {
+                height: 30px;
+                border: 2px solid #e1dede69;
+                border-radius: 5px;
+                text-align: left;
+                margin: 5px 5px;
+            }
+
+        .remember-box {
+            margin: auto;
+            font-size: 15px;
+            display: flex;
+        }
+
+            .remember-box a {
+                text-decoration: none;
+                margin-left: 30px;
+            }
+
+                .remember-box a:hover {
+                    color: grey;
+                }
+
+        .form-btns {
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            padding: 10px 0;
+        }
+
+            .form-btns button {
+                margin: auto;
+                font-size: 20px;
+                padding: 5px 15px;
+                border: 0;
+                border-radius: 15px;
+                /*color: rgb(75, 61, 61);*/
+                color: lightcoral;
+                background: lightcoral;
+                width: 220px;
+                color: white;
+                cursor: pointer;
+            }
+
+                .form-btns button:disabled {
+                    background: #8f8b85 !important;
+                    color: rgb(131, 120, 120) !important;
+                    cursor: not-allowed;
+                }
+
+                .form-btns button:hover {
+                    background: #5a6a8f;
+                    color: rgb(31, 28, 28);
+                }
+
+        .options {
+            padding-top: 15px;
+            margin: auto;
+            font-size: 13px;
+        }
+
+            .options a {
+                font-size: 13px;
+                color: lightcoral;
+            }
+
+                .options a:hover {
+                    color: rgb(167, 165, 165);
+                }
+
+        p {
+            text-align: center;
+            font-size: 12px;
+        }
+        
+            
+        
+    </style>
+
+</head>
+
+<body class="b">
+
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+    <div class="body-content" >
+
+        <div class="container" style="margin-top:100px">
+
+            <h2>Login</h2>
+            <div class="login-form" >
+                <form action="">
+
+                    <div class="form-item-email">
+
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { placeholder = "Email" } })
+                        @*@Html.ValidationMessageFor(model => model.Email, "", new { @class = "form-item-email" })*@
+                    </div>
+
+
+                    <div class="form-item-password">
+                        @*<input type="password" name="passWord" id="password" placeholder="Password">*@
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "Password" } })
+                        @*@Html.ValidationMessageFor(model => model.Email, "", new { @class = "form-item-password" })*@
+                        @*<input type="password" name="passWord" id="confirmPassword" placeholder="Confirm Password">*@
+                    </div>
+
+                    <div class="form-btns">
+
+                        <button class="signup" type="submit">Login</button>
+                        @*<div class="options">
+            Already have an account?<a href="#">Login here</a>
+        </div>*@
+
+                        <h5 class="options">
+                            @Html.ActionLink("SignUp Here?", "Register")
+                        </h5>
+                        <h5 class="options">@Html.ActionLink("Forgot account?", "ForgotPassword")</h5>
+
+                    </div>
+                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                </form>
+
+            </div>
+        </div>
+    </div>
+    }
+   
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+﻿@*<a href="" class="btn border">
+    <i class="fas fa-shopping-cart text-primary"></i>*@
+@*@{ int k = 0;}}
+    @foreach(var i in Model.details)
+            {
+        k += 1;
+            }*@
+@{  
+    Session["display"] = 0; 
+    try
+    {
+
+        int i = (int)(TempData["Count"]);
+        if (i != 0)
+        {
+            
+                
+                @Html.ActionLink("CheckOut", "checkout", null, new { @class = "fas fa-shopping-cart text-primary" })
+                
+                <span class="badge">@i </span>
+            
+            Session["display"] = 1;
+        }
+        else
+        {
+            @*<a href="" class="btn border">
+                    <i class="fas fa-shopping-cart text-primary"></i>
+                    <span class="badge">0</span>
+                </a>*@
+        }
+    }
+    catch
+    {
+        
+        int j = (int)(Session["display"]);
+    <div style="@(j != 0 ? "display:none" : "display:inline")">
+        
+            @Html.ActionLink("CheckOut", "checkout", null, new { @class = "fas fa-shopping-cart text-primary" })
+            <span class="badge">0</span>
+        
+    </div>
+       
+    }
+}
+
+
+@*</a>*@

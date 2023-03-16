@@ -1,0 +1,19 @@
+﻿@using MyEcommerce.Models
+
+<div class="input-group">
+
+    @*<input type="text" class="form-control" placeholder="Search for products">*@
+    @using (Html.BeginForm("search", "Home", FormMethod.Get))
+
+    {
+
+        <!-- search box -->
+        <div class="aa-search-box">
+
+            <input type="text" name="search" id="" placeholder="Search here..." class="input-group-text">
+            <button type="submit" value="search" class="form-control">Search</button>
+
+        </div>
+    }
+
+</div>

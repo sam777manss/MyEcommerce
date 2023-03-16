@@ -1,0 +1,32 @@
+﻿@using MyEcommerce.Models
+@model IPagedList<ProductAdd>
+
+@*<h2>ShirtsAction</h2>*@
+
+@using PagedList.Mvc;
+@using PagedList;
+
+
+<div class="main">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+
+            <div class="col-4">
+                <div class="card" style="width: 19rem; padding: 10px; box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px; margin-top:20px;">
+                    <a href="@Url.Action("CardView", "Home", new { id = item.id })">
+                        <img src="~/Images/@item.imageUrl" width="150" height="150" />
+                    </a>
+                    <div class="card-body">
+                        Details<p>@item.details</p>
+                        Price<p>@item.prize</p>
+                    </div>
+
+                </div>
+            </div>
+
+        }
+
+    </div>
+</div>
+@Html.PagedListPager(Model, i => Url.Action("GetItems", "Home", new { i, search = Request.QueryString["search"] }))

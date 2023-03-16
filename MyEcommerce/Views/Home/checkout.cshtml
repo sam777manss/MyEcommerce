@@ -1,0 +1,118 @@
+﻿@model IEnumerable<MyEcommerce.Models.UserCard>
+
+@*@{
+    Layout = null;
+}*@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>checkout</title>
+</head>
+<body>
+    @*<p>
+            @Html.ActionLink("Create New", "Create")
+        </p>*@
+    @{int showOrnot = 0;}
+    @{int total = 0;}
+    <table class="table">
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.email)*@
+                <div style="text-align:center">Email</div>
+            </th>
+            <th>
+                <div style="text-align:center">
+                    @*@Html.DisplayNameFor(model => model.totalprize)*@
+                    Prize
+                </div>
+            </th>
+            <th>
+                <div style="text-align:center">
+                    @*@Html.DisplayNameFor(model => model.totalprize)*@
+                    Quantity
+                </div>
+            </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.flag)
+        </th>*@
+            <th>
+                @*@Html.DisplayNameFor(model => model.imgcardUrl)*@
+                <div style="text-align:center"> Product</div>
+            </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>*@
+            @*<th>
+            @Html.DisplayNameFor(model => model.userId)
+        </th>*@
+            @*<th>
+            @Html.DisplayNameFor(model => model.details)
+        </th>*@
+            <th>
+                @*@Html.DisplayNameFor(model => model.address)*@
+                <div style="text-align:center">Shipping Address</div>
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                @{ total += item.totalprize.AsInt();
+                }
+                <td>
+                    <div style="text-align:center"> @Html.DisplayFor(modelItem => item.email) </div>
+                </td>
+                <td>
+                    <div style="text-align:center">  @Html.DisplayFor(modelItem => item.totalprize) </div>
+                </td>
+                <td>
+                    <div style="text-align:center">  @Html.DisplayFor(modelItem => item.quantity) </div>
+                </td>
+                @*<td>
+            @Html.DisplayFor(modelItem => item.flag)
+        </td>*@
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.imgcardUrl)*@
+                    <div style="text-align:center">  <img src="~/Images/@item.imgcardUrl" width="150" height="150" /> </div>
+                </td>
+                @*<td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>*@
+                @*<td>
+            @Html.DisplayFor(modelItem => item.userId)
+        </td>*@
+                @*<td>
+            @Html.DisplayFor(modelItem => item.id)
+        </td>*@
+                <td>
+                    <div style="text-align:center">   @Html.DisplayFor(modelItem => item.address) </div>
+                </td>
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |*@
+                    @Html.ActionLink("Remove", "DeleteFromCart", new { id = item.id, email = item.email })
+                </td>
+            </tr>
+                        showOrnot += 1;
+                    }
+        <h4>
+            <label class="prize" style="color:brown">Total Prize</label>
+            <div class="product-line-price" style="color:brown" id="prize">@total</div>
+        </h4>
+    </table>
+    <div style="@(showOrnot == 0 ? "display:none" : "display:inline")">
+        <h4>
+            @*@Html.ActionLink("CheckOut", "CheckOutUser", null, new { @class = "btn btn-primary btn-lg" }, new { style = "text-decoration:none;" })*@
+            @{
+                string url = "https://WWW.sandbox.paypal.com/cgi-bin/webscr?cmd=_xclick&amount=" + (@total / 78.19) + "&business=JanjuaTailors@Shop.com&item_name=Electronics_Items&return=Page";
+
+            }
+            <a href="@url" class="checkout-button button alt wc-forward">Proced to Checkout</a>
+        </h4>
+    </div>
+</body>
+</html>

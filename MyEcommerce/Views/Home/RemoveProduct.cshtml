@@ -1,0 +1,84 @@
+﻿@using MyEcommerce.Models
+
+@model IPagedList<ProductAdd>
+
+
+@using PagedList.Mvc;
+@using PagedList;
+@*@{
+        Layout = null;
+    }*@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RemoveProduct</title>
+</head>
+<body>
+    <p>
+        @*@Html.ActionLink("Create New", "Create")*@
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().prize)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().availability)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().details)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().flag)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().imageUrl)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.prize)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.availability)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.details)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.flag)
+                </td>
+                <td>
+                    <img src="~/Images/@item.imageUrl" width="150" height="150" />
+                </td>
+                <td>
+                    <h4>@Html.ActionLink("Edit", "ProductEdit", null, new { id = item.id }, new { style = "text-decoration:none;" })</h4>
+                    @*@Html.ActionLink("Details", "Details", new { id=item.id }) |*@
+                    <h4>@Html.ActionLink("Delete", "ProductDelete", null, new { id = item.id }, new { style = "text-decoration:none;" })</h4>
+                </td>
+            </tr>
+        }
+
+    </table>
+    @Html.PagedListPager(Model, i => Url.Action("RemoveProduct", "Home", new { i, search = Request.QueryString["search"] }))
+</body>
+</html>

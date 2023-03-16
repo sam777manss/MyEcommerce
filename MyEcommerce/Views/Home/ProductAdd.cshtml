@@ -1,0 +1,60 @@
+﻿@*@model MyEcommerce.Models.ProductAdd*@
+@using MyEcommerce.Models
+@model ProductAddModel2
+@*<h2>ProductAdd</h2>*@
+
+@*<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />*@
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<table class="table-responsive">
+    <tr>
+
+        <td>
+            @using (Html.BeginForm("ProductAdd", "Home", FormMethod.Post,
+                    new { enctype = "multipart/form-data" }))
+            {
+                <div>
+                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                    <h1>Add Product Details</h1>
+                    Product Name : @Html.TextBox("name", null, new { @class = "form-control form-control-sm" })
+                    @*@Html.EditorFor(model => model.name, null, new { @class = "form-control form-control-sm" })*@
+                    Product Prize : @Html.TextBox("prize", null, new { @class = "form-control form-control-sm" })
+                    Availability :  @Html.TextBox("availability", null, new { @class = "form-control" })
+                    Description :  @Html.TextBox("description", null, new { @class = "form-control" })
+                    Details :  @Html.TextBox("details", null, new { @class = "form-control" })
+                    @*Category : @Html.TextBox("flag", null, new { @class = "form-control" })*@
+                    flag:
+                <select class="form-control" name="flag" id="flag">
+                    <option> --- Choose --- </option>
+                    <option value="chair">chair</option>
+                    <option value="jeans">jeans</option>
+                    <option value="watch">watch</option>
+                    <option value="glasses">glasses</option>
+                    <option value="coat">coat</option>
+                    <option value="shirt">shirt</option>
+                    <option value="toy">toy</option>
+                </select>
+                    Category:
+                <select class="form-control" name="categories" id="categories">
+                    <option> --- Choose --- </option>
+                    <option value="men">men</option>
+                    <option value="women">women</option>
+                    <option value="baby">baby</option>
+                    <option value="electronic">electronic</option>
+
+                </select>
+                    <div class="mb-3">
+                        <label for="file" class="form-label">Image : </label>
+                        <input type="file" name="file" id="file" class="form-control" />
+                    </div>
+                    @*@Html.HiddenFor(x => x.address, new { @Value = "none"})*@
+                    @*@Html.HiddenFor(model => model.address)*@
+                    <input type="submit" value="Upload Product " class="btn btn-primary" />
+                </div>
+            }
+        </td>
+
+    </tr>
+</table>
+
+

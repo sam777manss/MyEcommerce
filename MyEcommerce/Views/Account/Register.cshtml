@@ -1,0 +1,262 @@
+﻿@model MyEcommerce.Models.RegisterViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Signup</title>
+    <link href="~/Content/Styles/SignUpStyle.css" rel="stylesheet" />
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+
+
+        .body-content {
+            padding-top: 5vh;
+            font-family: Arial, Helvetica, sans-serif;
+            color: lightcoral;
+            background: white;
+        }
+
+        .container {
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            border: 2px solid White;
+            border-radius: 15px;
+            box-shadow: 0 0 25px pink;
+        }
+
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-item {
+            margin: 5px;
+            padding-bottom: 10px;
+            display: flex;
+        }
+
+            .form-item input {
+                width: 150px;
+                height: 30px;
+                border: 2px solid #e1dede69;
+                border-radius: 5px;
+                text-align: left;
+                margin: 0 5px;
+            }
+
+        .form-item-email {
+            margin: 0 5px;
+            padding-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+            .form-item-email input {
+                height: 30px;
+                border: 2px solid #e1dede69;
+                border-radius: 5px;
+                text-align: left;
+                margin: 0 5px;
+            }
+
+        .form-item-DOB {
+            display: flex;
+            align-items: center;
+        }
+
+            .form-item-DOB label {
+                font-size: 14px;
+                margin: 5px 15px;
+            }
+
+            .form-item-DOB input {
+                border-radius: 5px;
+            }
+
+        .form-item-gender {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+
+            .form-item-gender label {
+                margin: 5px 15px;
+            }
+
+        .form-item-DOB input {
+            border-radius: 5px;
+        }
+
+
+        .form-item-password {
+            margin: 5px;
+            padding-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+            .form-item-password input {
+                height: 30px;
+                border: 2px solid #e1dede69;
+                border-radius: 5px;
+                text-align: left;
+                margin: 5px 5px;
+            }
+
+        .remember-box {
+            margin: auto;
+            font-size: 15px;
+            display: flex;
+        }
+
+            .remember-box a {
+                text-decoration: none;
+                margin-left: 30px;
+            }
+
+                .remember-box a:hover {
+                    color: grey;
+                }
+
+        .form-btns {
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            padding: 10px 0;
+        }
+
+            .form-btns button {
+                margin: auto;
+                font-size: 20px;
+                padding: 5px 15px;
+                border: 0;
+                border-radius: 15px;
+                color: rgb(75, 61, 61);
+                background: lightcoral;
+                width: 220px;
+                color: white;
+                cursor: pointer;
+            }
+
+                .form-btns button:disabled {
+                    background: #8f8b85 !important;
+                    color: rgb(131, 120, 120) !important;
+                    cursor: not-allowed;
+                }
+
+                .form-btns button:hover {
+                    background: #5a6a8f;
+                    color: rgb(31, 28, 28);
+                }
+
+        .options {
+            padding-top: 15px;
+            margin: auto;
+            font-size: 13px;
+        }
+
+            .options a {
+                font-size: 13px;
+                color: lightcoral;
+            }
+
+                .options a:hover {
+                    color: rgb(167, 165, 165);
+                }
+
+        p {
+            text-align: center;
+            font-size: 12px;
+        }
+    </style>
+
+</head>
+<body>
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryval")*@
+
+
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+
+        <div class="body-content">
+
+            <div class="container">
+
+                <h2>Sign Up</h2>
+                <div class="login-form">
+                    <form action="">
+                        <div class="form-item">
+
+                            @Html.EditorFor(model => model.fname, new { htmlAttributes = new { placeholder = "First Name" } })
+                            @*@Html.ValidationMessageFor(model => model.fname, "", new { @class = "form-email" })*@
+
+                            @Html.EditorFor(model => model.lname, new { htmlAttributes = new { placeholder = "Last Name" } })
+                            @*@Html.ValidationMessageFor(model => model.lname, "", new { @class = "form-email" })*@
+                        </div>
+                        <div class="form-item-email">
+
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { placeholder = "Email" } })
+                            @*@Html.ValidationMessageFor(model => model.Email, "", new { @class = "form-item-email" })*@
+                        </div>
+
+
+                        <div class="form-item-password">
+                            @*<input type="password" name="passWord" id="password" placeholder="Password">*@
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "Password" } })
+                            @*@Html.ValidationMessageFor(model => model.Email, "", new { @class = "form-item-password" })*@
+                            @*<input type="password" name="passWord" id="confirmPassword" placeholder="Confirm Password">*@
+                            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { placeholder = "Confirm Password" } })
+                            @*@Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "form-item-password" })*@
+                            @Html.EditorFor(model => model.Pnumber, new { htmlAttributes = new { placeholder = "Phone Number" } })
+                        </div>
+
+                        <div class="form-btns">
+
+                            <button class="signup" type="submit">Sign Up</button>
+                            @*<div class="options">
+                Already have an account?<a href="#">Login here</a>
+            </div>*@
+                            <h5 class="options">
+                                @Html.ActionLink("Already have an account?", "Login")
+                            </h5>
+
+                        </div>
+                        @*@Html.ValidationMessage("Email", "", new { @class = "text-danger" })*@
+                        @*@Html.ValidationMessageFor(model => model.fname, "", new { @class = "text-danger" })<br>
+        @Html.ValidationMessageFor(model => model.lname, "", new { @class = "text-danger" })<br>
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })<br>
+        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })<br>
+        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })*@
+                        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        
+
+
+    }
+
+    @*@Html.ValidationMessage("CustomError", "", new { @class = "text-danger" })*@
+
+
+</body>
+</html>

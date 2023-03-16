@@ -1,0 +1,93 @@
+﻿@model IEnumerable<MyEcommerce.Models.ItemToBeShipped>
+
+@*@{
+    Layout = null;
+}*@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CheckOutUser</title>
+</head>
+<body>
+    @{int total = 0;}
+    <div class="jumbotron text-center">
+        <h1 class="display-3">Thank You!</h1>
+    </div>
+    <p>
+        <h4>Take the screen shot of Invoice</h4>
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.totalprize)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.flag)
+                </th>*@
+            <th>
+                @*@Html.DisplayNameFor(model => model.imgcardUrl)*@
+                Product Image
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.userId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.details)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.address)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            {
+                total += item.totalprize.AsInt();
+            }
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.totalprize)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.flag)
+                    </td>*@
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.imgcardUrl)*@
+                    <img src="~/Images/@item.imgcardUrl" width="150" height="150" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.userId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.details)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.address)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                        @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.id })*@
+                </td>
+            </tr>
+        }
+        <h3>Pay on Delivery @total</h3>
+    </table>
+</body>
+</html>
